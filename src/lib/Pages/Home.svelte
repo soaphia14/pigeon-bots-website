@@ -6,8 +6,8 @@
     let pigeon_img_src = '17Vg8-uOJ3NoCJplLPk9IEeoosAcI-NMF';
     let bots_img_src = '1OsB2g9HQQzYWigGWKUDfMhdR2NBp9Qxp';
     let team_word_img_src = '15rUD4wia2S7aSCuTuJ1U_uiotORjeUvH';
-    let team_num_img_src = '1_gzYZbdRgx9voxwuWaVTnHpMYS9_HYYn';
-    let team_num_sm_img_src = '1u_M9U_ZKdz4ZEcRR07qavkpbsL0K6ZBt';
+    let team_num_img_src = '1RptxmhovTHb4R8PdIp-tq-SLDOuiuCp8';
+    let team_num_sm_img_src = '1yusp_SgZPIBCFuMDQIcuBE-uR2z8HxXW';
 
     let pigeon_src = '1BndtkXiDpB-6fc0HIvoRgHvPcnZn-9Vy';
 
@@ -61,8 +61,8 @@
         <img id = "team_word_img" src = {prefix+team_word_img_src} alt = '"Team"'/>
     </div>
     <div class = "col-sm-6 mt-sm-none">
-        <img id = "team_num_img" src = {prefix+team_num_img_src} alt = '"18792"'/>
-        <img id = "team_num_sm_img" src = {prefix+team_num_sm_img_src} alt = '"#18792"'/>
+        <img id = "team_num_img" src = {prefix+team_num_img_src} alt = '"23975"'/>
+        <img id = "team_num_sm_img" src = {prefix+team_num_sm_img_src} alt = '"#23975"'/>
     </div>
 </div>
 

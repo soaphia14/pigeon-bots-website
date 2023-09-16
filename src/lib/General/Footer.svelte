@@ -6,9 +6,9 @@
     <div class = "row">
         <div class = "col-sm d-flex align-items-center">
             <span>
-                <a target = "_blank" href = "https://www.youtube.com"><i class = "fa-brands fa-youtube"></i></a>
-                <a target = "_blank" href = "https://www.instagram.com"><i class = "fa-brands fa-instagram"></i></a>
-                <a target = "_blank" href = "https://www.twitter.com"><i class = "fa-brands fa-twitter"></i></a>
+                <a target = "_blank" href = "https://www.youtube.com/@penguinsrobotics"><i class = "fa-brands fa-youtube"></i></a>
+                <a target = "_blank" href = "https://www.instagram.com/penguinsrobotics/"><i class = "fa-brands fa-instagram"></i></a>
+                <a target = "_blank" href = "https://twitter.com/FTC18792"><i class = "fa-brands fa-twitter"></i></a>
                 <a target = "_blank" href = "mailto:penguinsroboticsusa@gmail.com"><i class = "fa-solid fa-envelope"></i></a>
         
             </span>
