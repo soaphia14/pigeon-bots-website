@@ -80,9 +80,9 @@
     <h1 class = "text-green mb-4">About Us</h1>
     <div class = "row my-4">
         <div class = "col-lg-6 mb-4">
-            Team 18792, Pigeon Bots, is a First Tech Challenge team based in Rockville Maryland.
+            Team 23975, Pigeon Bots, is a First Tech Challenge team based in Rockville Maryland.
             <br><br>
-            Formed in the summer of 2020, our members are all ages from 13 to 15. Our mission is to promote STEM throughout the local and wider community.
+            Formed in the summer of 2020, our members are all ages from 13 to 16. Our mission is to promote STEM throughout the local and wider community.
         </div>
         <div id = "team_img" class = "col-lg-6 d-flex justify-content-center align-items-center px-5">
             <Carousel images_info = {carousel_src} />
