@@ -144,7 +144,7 @@
     #collapseNav > li >a {
         width: 100vw;
         text-decoration: underline 0.15em rgba(0,0,0,0);
-        transition: text-decoration-color 300ms;
+        transition: text-decoration-color 200ms;
     }
     #collapseNav > li >a:hover {
         background-color: unset;
