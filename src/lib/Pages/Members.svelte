@@ -4,22 +4,16 @@
     let blank_img = "1g94wTr1GUc74FOoySBXBHut015Dq9aYs";
     let people = [
         {
+            name: "Eddie",
+            role: "Captain",
+            des: "Hello, my name is Eddie, and I’m in 9th grade at Mclean High School. This is my 3rd year in FTC and my 5th year in FIRST. I help CAD and programming. I enjoy playing video games and reading.",
+            image_src: "15V8R92Wi4x3koGJ4BTcEqKgc2FiMWgJP"
+        },
+        {
             name: "Alex",
             role: "CAD/Build",
             des: "Hello, my name is Alex and I’m a freshman at Winston Churchill Highschool in Rockville Maryland. I’ve been doing FTC for 3 years now and I mainly do CAD and building. I enjoy reading and playing video games.",
             image_src: "15d6MUJJ-bu_YVRJWkGXeLSzWCGmCShOx"
-        },
-        {
-            name: "Christopher",
-            role: "Build/Engineering NB",
-            des: "Hi! My name is Christopher and I’m a 8th grader at Cabin John Middle School.  This is my 2nd year in FTC and I am one of the drivers, builders, and engineering notebook writers.  I like to juggle and play Roblox.",
-            image_src: "1dlKLbHvGEPsFWVf2kyppWg4ut8iyl11E"
-        },
-        {
-            name: "Eddie",
-            role: "CAD/Programming",
-            des: "Hello, my name is Eddie, and I’m in 9th grade at Mclean High School. This is my 3rd year in FTC and my 5th year in FIRST. I help CAD and programming. I enjoy playing video games and reading.",
-            image_src: "15V8R92Wi4x3koGJ4BTcEqKgc2FiMWgJP"
         },
         {
             name: "Isabelle",
@@ -29,7 +23,7 @@
         },
         {
             name: "Jesse",
-            role: "Outreach",
+            role: "Outreach/Programming",
             des: "Hi, I’m Jesse, an 8th grader at Takoma Park Middle School. This is my 2nd year participating in FTC. I mainly do outreach on the team. I also enjoy playing video games and basketball in my free time.",
             image_src: blank_img
         },
@@ -45,7 +39,7 @@
             des: "",
             image_src: "15Jt3h80GCauh7j0q18F8YWHoPjN2NQJi"
         },
-        { // TODO: PUT THE RIGHT NAMES
+        { // THEY ARE THE RIGHT NAMES!!
             name: "Aliana",
             role: "",
             des: "",
