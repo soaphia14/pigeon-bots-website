@@ -10,17 +10,24 @@
             image_src: "15V8R92Wi4x3koGJ4BTcEqKgc2FiMWgJP"
         },
         {
+            name: "Isabelle",
+            role: "Programming Head",
+            des: "Hi, my name is Isabelle and I’m in 8th grade at Cabin John Middle School. This is my 4th year in FTC and my 5th year in FIRST. I am the head programmer, part-time CADder, and help with building.",
+            image_src: "15VyEyAmA7Jtt74S9ByZ9owjUz64fRIT_"
+        },
+        {
+            name: "Kaixin",
+            role: "Outreach Head",
+            des: "I'm Kaixin, a junior at Richard Montgomery HS. This is my first year in both FTC and FIRST. I love all art forms and find all sciences fascinating.",
+            image_src: blank_img
+        },
+        {
             name: "Alex",
             role: "CAD/Build",
             des: "Hello, my name is Alex and I’m a freshman at Winston Churchill Highschool in Rockville Maryland. I’ve been doing FTC for 3 years now and I mainly do CAD and building. I enjoy reading and playing video games.",
             image_src: "15d6MUJJ-bu_YVRJWkGXeLSzWCGmCShOx"
         },
-        {
-            name: "Isabelle",
-            role: "Programming",
-            des: "Hi, my name is Isabelle and I’m in 8th grade at Cabin John Middle School. This is my 4th year in FTC and my 5th year in FIRST. I am the head programmer, part-time CADder, and help with building.",
-            image_src: "15VyEyAmA7Jtt74S9ByZ9owjUz64fRIT_"
-        },
+        
         {
             name: "Jesse",
             role: "Outreach/Programming",
@@ -35,27 +42,21 @@
         },
         {
             name: "Ben",
-            role: "",
-            des: "",
+            role: "Engineering NB/CAD",
+            des: "Hi, I'm Ben and I'm a junior at Poolesville High School. This is my first year doing FTC. I like playing sports in my free time.",
             image_src: "15Jt3h80GCauh7j0q18F8YWHoPjN2NQJi"
         },
         { // THEY ARE THE RIGHT NAMES!!
             name: "Aliana",
-            role: "",
-            des: "",
+            role: "Outreach/Programming",
+            des: "Hi, I’m Aliana and i’m a freshman at Thomas Jefferson High School for Science and Technology. It’s my first year doing FTC and I do outreach and programming. Some other hobbies I have are reading books and swimming.",
             image_src: "1597Alp46H-563Pl-aDbdKR00bQciIqWg"   
         },
         {
             name: "Alicia",
-            role: "",
-            des: "",
+            role: "Programmer",
+            des: "Hi, I'm Alicia. I'm a ninth grader at TJ High School. It's my first year doing FTC. I enjoy reading and doing ballet in my free time.",
             image_src: "15131FQ735TUj_EZFxElPQ1b2qFg96KXK",  
-        },
-        {
-            name: "Kaixin",
-            role: "",
-            des: "",
-            image_src: blank_img
         }
     ]
     // need: aliana, alicia, ben, kaixin, ben
