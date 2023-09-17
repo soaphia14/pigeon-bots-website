@@ -34,7 +34,7 @@
     onMount(setRange);
     
     const copyEmail = () => {
-        navigator.clipboard.writeText("penguinsroboticsusa@gmail.com").then(
+        navigator.clipboard.writeText("pigeonbotsftc@gmail.com").then(
             (message) => {
                 jQuery("#copied_alert_button").removeClass("d-none");
             }
@@ -99,14 +99,14 @@
             </button>
         </a>
         <br>
-        <a target = "_blank" href = "mailto:penguinsrobotics@gmail.com">
+        <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
             <button class = "btn btn-outline-primary mt-2">
                 Email us!
             </button>
         </a>
         <br>
         <button class = "btn btn-outline-primary mt-2" on:click = {copyEmail}>
-            Copy our email (penguinsroboticsusa@gmail.com)
+            Copy our email (pigeonbotsftc@gmail.com)
         </button>
         
         <div id = "copied_alert_button" class = "d-none alert alert-success alert-dismissible fade show mt-2 fs-6" > <!-- Copied alert -->
