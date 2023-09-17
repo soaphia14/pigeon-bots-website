@@ -6,13 +6,13 @@
         {
             name: "Eddie",
             role: "Captain",
-            des: "Hello, my name is Eddie, and I’m in 9th grade at Mclean High School. This is my 3rd year in FTC and my 5th year in FIRST. I help CAD and programming. I enjoy playing video games and reading.",
+            des: "Hello, my name is Eddie, and I’m in 10th grade at Mclean High School. This is my 3rd year in FTC and my 5th year in FIRST. I help CAD and programming. I enjoy playing video games and reading.",
             image_src: "15V8R92Wi4x3koGJ4BTcEqKgc2FiMWgJP"
         },
         {
             name: "Isabelle",
             role: "Programming Head",
-            des: "Hi, my name is Isabelle and I’m in 8th grade at Cabin John Middle School. This is my 4th year in FTC and my 5th year in FIRST. I am the head programmer, part-time CADder, and help with building.",
+            des: "Hi, my name is Isabelle and I’m in 9th grade at Cabin John Middle School. This is my 4th year in FTC and my 5th year in FIRST. I am the head programmer, part-time CADder, and help with building.",
             image_src: "15VyEyAmA7Jtt74S9ByZ9owjUz64fRIT_"
         },
         {
@@ -37,7 +37,7 @@
         {
             name: "Sophia",
             role: "Programming",
-            des: "Hi, I’m Sophia! I’m 15 years old and I attend Poolesville High School. I’ve been in FTC as a programmer for three years, and I like to ice skate in my free time.",
+            des: "Hi, I’m Sophia! I’m 16 years old and I attend Poolesville High School. I’ve been in FTC as a programmer for three years, and I like to ice skate in my free time.",
             image_src: "14wnT1_Qa0XW82Ik1PNmBHqs4dGLefUC6"
         },
         {
