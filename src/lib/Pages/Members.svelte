@@ -19,7 +19,7 @@
             name: "Kaixin",
             role: "Outreach Head",
             des: "I'm Kaixin, a junior at Richard Montgomery HS. This is my first year in both FTC and FIRST. I love all art forms and find all sciences fascinating.",
-            image_src: blank_img
+            image_src: "1SZoYFlmblTZaJB05dIlldTP72aADt54y"
         },
         {
             name: "Alex",
@@ -32,7 +32,7 @@
             name: "Jesse",
             role: "Outreach/Programming",
             des: "Hi, I’m Jesse, an 8th grader at Takoma Park Middle School. This is my 2nd year participating in FTC. I mainly do outreach on the team. I also enjoy playing video games and basketball in my free time.",
-            image_src: blank_img
+            image_src: "1G5GWj2LQD-RuDTk9rv-dW_ktt0TmazpT"
         },
         {
             name: "Sophia",
@@ -54,7 +54,7 @@
         },
         {
             name: "Alicia",
-            role: "Programmer",
+            role: "Programming",
             des: "Hi, I'm Alicia. I'm a ninth grader at TJ High School. It's my first year doing FTC. I enjoy reading and doing ballet in my free time.",
             image_src: "15131FQ735TUj_EZFxElPQ1b2qFg96KXK",  
         }
