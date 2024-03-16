@@ -50,19 +50,19 @@
 
 <div class ="row px-4 mt-3" id = "team_name">
     <div class = "col-sm-6 d-flex justify-content-end m-0">
-        <img id = "pigeon_img" src = {prefix+pigeon_img_src} alt = '"Pigeon"'/>
+        <img id = "pigeon_img" src = "pigeonword.png" alt = '"Pigeon"'/>
     </div>
     <div class = "col-sm-6 m-0">
-        <img id = "bot_img" src = {prefix+bots_img_src} alt = '"Bots"'/>
+        <img id = "bot_img" src = "bots.png" alt = '"Bots"'/>
     </div>
 </div>
 <div class ="row pt-4 " id = "team_num">
     <div class = "col-sm-6 d-flex justify-content-end mt-sm-none">
-        <img id = "team_word_img" src = {prefix+team_word_img_src} alt = '"Team"'/>
+        <img id = "team_word_img" src = "teamteam.png" alt = '"Team"'/>
     </div>
     <div class = "col-sm-6 mt-sm-none">
-        <img id = "team_num_img" src = {prefix+team_num_img_src} alt = '"23975"'/>
-        <img id = "team_num_sm_img" src = {prefix+team_num_sm_img_src} alt = '"#23975"'/>
+        <img id = "team_num_img" src = "teamnum.png" alt = '"23975 Regular"'/>
+        <img id = "team_num_sm_img" src = "teamnumSM.png" alt = '"#23975 Small"'/>
     </div>
 </div>
 
@@ -70,7 +70,7 @@
 <div style = "height: 4em;"></div>
 <span id = "pigeon_army" class = "position-absolute d-flex w-100 justify-content-center" style = "left:0; border-bottom: 3px solid rgba(0, 0, 0, 0.45);">
     {#each rangeArray as i}
-        <img class="repeating-pigeon" src = {prefix+pigeon_src} alt = 'Pigeon'/>
+        <img class="repeating-pigeon" src = "pigeon.png" alt = 'Pigeon'/>
     {/each}
 </span>
 
