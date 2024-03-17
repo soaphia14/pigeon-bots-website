@@ -1,7 +1,9 @@
 <script>
     import { onMount } from "svelte";
     import { prefix } from "../globalVars";
+    import db from '../../firebase';
     import Carousel from "../General/Carousel.svelte";
+    import {Firestore, collection, doc, getDoc, getDocs, getFirestore, updateDoc } from "@firebase/firestore";
 
     let pigeon_img_src = '17Vg8-uOJ3NoCJplLPk9IEeoosAcI-NMF';
     let bots_img_src = '1OsB2g9HQQzYWigGWKUDfMhdR2NBp9Qxp';
@@ -31,7 +33,15 @@
         rangeArray = Array(num);
     };
     addEventListener("resize", setRange);
-    onMount(setRange);
+
+
+    var homeData
+    var done = false;
+    onMount(async () => {
+        homeData = (await getDoc(doc(db, "General/Home"))).data();
+        setRange();
+        done = true;
+    });
     
     const copyEmail = () => {
         navigator.clipboard.writeText("pigeonbotsftc@gmail.com").then(
@@ -74,46 +84,22 @@
     {/each}
 </span>
 
-
+{#if done}
 <div id = "Content" class = "mt-5">
     <br><br><br>
     <h1 class = "text-green mb-4">About Us</h1>
     <div class = "row my-4">
-        <div class = "col-lg-6 mb-4">
-            Team 23975, Pigeon Bots, is a First Tech Challenge team based in Rockville Maryland.
+        <div class = "col-lg-6 mb-4" >
+            {@html homeData.aboutDes}
             <br><br>
-            Formed in the summer of 2020, our members are all ages from 13 to 16. Our mission is to promote STEM throughout the local and wider community.
-        </div>
+            Email us at 
+            <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
+                {homeData.email}
+            </a>!
+        </div> 
         <div id = "team_img" class = "col-lg-6 d-flex justify-content-center align-items-center px-5">
             <Carousel images_info = {carousel_src} />
         </div>
-    </div>
-    <hr>
-    <h1 class = "text-purple my-4">Support Us</h1>    
-    <div>
-        Want to support us or our mission? See the links below!
-        <br>
-        <a target = "_blank" href = "https://www.gofundme.com/f/help-penguins-robotics-pay-for-parts?qid=4afdc28d586378d0c5c9ce0c4f5515c0">
-            <button class = "btn btn-outline-success mt-4">
-                Donate to our GoFundMe!
-            </button>
-        </a>
-        <br>
-        <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
-            <button class = "btn btn-outline-primary mt-2">
-                Email us!
-            </button>
-        </a>
-        <br>
-        <button class = "btn btn-outline-primary mt-2" on:click = {copyEmail}>
-            Copy our email (pigeonbotsftc@gmail.com)
-        </button>
-        
-        <div id = "copied_alert_button" class = "d-none alert alert-success alert-dismissible fade show mt-2 fs-6" > <!-- Copied alert -->
-            <button type = "button" class = "btn-close" on:click = {removeAlert}></button>
-            <strong>Email copied!</strong>
-        </div>
-        
     </div>
     <hr>
     <h1 class = "text-green my-4">Current Sponsors</h1>   
@@ -127,7 +113,7 @@
 
 
 </div>
-
+{/if}
 <style>
     /* Pigeon Bot Title */
     #pigeon_img {
@@ -195,3 +181,4 @@
         }
     }
 </style>
+

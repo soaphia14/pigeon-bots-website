@@ -34,11 +34,14 @@
             {#each images_info as image_info, i}
                 {#if i == 0}
                 <div class = "carousel-item active" style = "vertical-align: middle; w-100">
-                    <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/>
+                    <iframe src="https://drive.google.com/file/d/1UAZR6Q7VB6Ep1LIYxy-6ZrymG_8hcULx/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;" allow="autoplay"></iframe>
+                    <!-- <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/> -->
                 </div>
                 {:else}
                 <div class = "carousel-item" style = "vertical-align: middle; w-100">
-                    <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/>
+                    <iframe src="https://drive.google.com/file/d/{image_info}/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto; border: 0;" allow="autoplay"></iframe>
+
+                    <!-- <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/> -->
                 </div>
                 {/if}
             {/each}
