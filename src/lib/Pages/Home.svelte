@@ -1,26 +1,11 @@
 <script>
     import { onMount } from "svelte";
     import { prefix } from "../globalVars";
-    import db from '../../firebase';
+    import {db, storage} from '../../firebase';
     import Carousel from "../General/Carousel.svelte";
     import {Firestore, collection, doc, getDoc, getDocs, getFirestore, updateDoc } from "@firebase/firestore";
+    import { deleteObject, getBlob, getDownloadURL, listAll, ref, uploadBytes } from "@firebase/storage";
 
-    let pigeon_img_src = '17Vg8-uOJ3NoCJplLPk9IEeoosAcI-NMF';
-    let bots_img_src = '1OsB2g9HQQzYWigGWKUDfMhdR2NBp9Qxp';
-    let team_word_img_src = '15rUD4wia2S7aSCuTuJ1U_uiotORjeUvH';
-    let team_num_img_src = '1RptxmhovTHb4R8PdIp-tq-SLDOuiuCp8';
-    let team_num_sm_img_src = '1yusp_SgZPIBCFuMDQIcuBE-uR2z8HxXW';
-
-    let pigeon_src = '1BndtkXiDpB-6fc0HIvoRgHvPcnZn-9Vy';
-
-    let carousel_src = ['15JKO906eso44iEdOfQ8OanL4igkqqStb', '1Io-DTa9BKHdN4S0FUc_kyx4rfZ57-TuL', '1huSPWpP7tCeM512dD3JUxW0yDCPuG5ff', '1UAZR6Q7VB6Ep1LIYxy-6ZrymG_8hcULx']
-    let sponsors_src = [
-        {   link: 'https://www.caci.com/',
-            src: '1WAlbbA6Txy9Wn7ka7-sWiNNGNmv7foZ2'}, 
-        {   link: 'https://www.potomacoaktutoring.com/',
-            src: '18ltUmc47SDlWarq19ppiMNbvTU0LhvMt'},
-        {   link:'https://www.codeadvantage.org/',
-            src: '19cYuQ0bQYTdpfeeMT2YwuqcyHE5O2zRg'}];
 
     let rangeArray =[];
     let setRange = () =>{
@@ -37,24 +22,49 @@
 
     var homeData
     var done = false;
+    
+    var carouselSrc = [];
+    var sponsorsSrc = [];
+
     onMount(async () => {
+        // get descriptions/links
         homeData = (await getDoc(doc(db, "General/Home"))).data();
+        
+        // get slideshow photos
+        const res = await listAll(ref(storage, "homeSlideshow"))
+        var foo = await new Promise((resolve, reject) => {
+            res.items.forEach(async (itemRef, index, array) => {
+                const imgSrc = await getDownloadURL(ref(storage, "homeSlideshow/"+itemRef.name));
+                carouselSrc.push(imgSrc);
+                if (index == array.length - 1) resolve();
+            });
+        })
+        
+        console.log("home", carouselSrc)
+        // get sponsor photos
+        const res2 = await listAll(ref(storage, "sponsors"))
+        var bar = await new Promise((resolve, reject) => {
+            res2.items.forEach(async (itemRef, index, array) => {
+                const imgSrc = await getDownloadURL(ref(storage, "sponsors/"+itemRef.name));
+                let websiteLink = itemRef.name.split(".")[0];
+                let linkList = websiteLink.split("(");
+                websiteLink = linkList[1] + "." + linkList[2];
+
+                sponsorsSrc.push({
+                    src: imgSrc,
+                    link: websiteLink
+                });
+                if (index == array.length-1) resolve();
+            });
+        })
+
+
         setRange();
+        console.log("sponsors", sponsorsSrc);
         done = true;
+        
     });
     
-    const copyEmail = () => {
-        navigator.clipboard.writeText("pigeonbotsftc@gmail.com").then(
-            (message) => {
-                jQuery("#copied_alert_button").removeClass("d-none");
-            }
-        )
-    };
-
-    const removeAlert = () => {
-        jQuery("#copied_alert_button").addClass("d-none");
-        
-    };
         
 </script>
 
@@ -89,25 +99,30 @@
     <br><br><br>
     <h1 class = "text-green mb-4">About Us</h1>
     <div class = "row my-4">
-        <div class = "col-lg-6 mb-4" >
+        <div class = "col-lg-6">
             {@html homeData.aboutDes}
             <br><br>
+            <span>
             Email us at 
-            <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
-                {homeData.email}
-            </a>!
-        </div> 
-        <div id = "team_img" class = "col-lg-6 d-flex justify-content-center align-items-center px-5">
-            <Carousel images_info = {carousel_src} />
+                <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
+                    {homeData.email}
+                </a>!
+            </span>
+        </div>
+        <div id = "team_img" class = "col-lg-6 flex-center px-5 mt-2" >
+            <Carousel images_info = {carouselSrc} />
         </div>
     </div>
+    
+    
     <hr>
+
     <h1 class = "text-green my-4">Current Sponsors</h1>   
     <div class = "row">
-        {#each sponsors_src as sponsor_src, i}
-        <div class = "col-sm d-flex justify-content-center align-items-center sponsors">
-            <a href = {sponsor_src.link} target = "_blank"><img class = "w-75" src = {prefix + sponsor_src.src} alt = {'sponsor'+String(i)}></a>
-        </div>
+        {#each sponsorsSrc as sponsor_src, i}
+            <div class = "col-sm d-flex justify-content-center align-items-center sponsors">
+                <a href = {"https://"+sponsor_src.link} target = "_blank"><img class = "w-75" src = {sponsor_src.src} alt = {'sponsor'+String(i)}></a>
+            </div>
         {/each}
     </div> 
 

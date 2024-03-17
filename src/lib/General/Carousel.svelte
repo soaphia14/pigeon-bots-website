@@ -1,9 +1,9 @@
 <script>
     import { onMount } from "svelte";
-    import { carousel_id, prefix } from "../globalVars";
+    import { carousel_id } from "../globalVars";
 
     export let images_info = [];
-    
+    console.log("here", images_info, images_info.length)
     let spec_carousel_id;
     onMount(() => {
         carousel_id.update((state)=> (state+1)%20);
@@ -11,9 +11,9 @@
     })
 
 </script>
-{#if images_info.length <= 1}
+{#if images_info.length <= 1 }
 <div class = "d-flex justify-content-center align-items-center h-100" style = "vertical-align">
-    <img src = {prefix + images_info[0]} alt = "Slide Img 0" class = "d-block m-3" style = "width: 90%;"/>
+    <img src = {images_info[0]} alt = "Slide Img 0" class = "d-block m-3" style = "width: 90%;"/>
 </div>
 {:else}
 <div class = "d-flex justify-content-center align-items-center h-100" >
@@ -34,12 +34,13 @@
             {#each images_info as image_info, i}
                 {#if i == 0}
                 <div class = "carousel-item active" style = "vertical-align: middle; w-100">
-                    <iframe src="https://drive.google.com/file/d/1UAZR6Q7VB6Ep1LIYxy-6ZrymG_8hcULx/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;" allow="autoplay"></iframe>
-                    <!-- <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/> -->
+                    <!-- <iframe src="https://drive.google.com/file/d/1UAZR6Q7VB6Ep1LIYxy-6ZrymG_8hcULx/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;" allow="autoplay"></iframe> -->
+                    <img src = {image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/>
                 </div>
                 {:else}
                 <div class = "carousel-item" style = "vertical-align: middle; w-100">
-                    <iframe src="https://drive.google.com/file/d/{image_info}/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto; border: 0;" allow="autoplay"></iframe>
+                    <!-- <iframe src="https://drive.google.com/file/d/{image_info}/preview"  class = "d-block w-100" style = "marigin-left: auto; margin-right: auto; border: 0;" allow="autoplay"></iframe> -->
+                    <img src = {image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/>
 
                     <!-- <img src = {prefix + image_info} alt = {"Slide Img "+i} class = "d-block w-100" style = "marigin-left: auto; margin-right: auto;"/> -->
                 </div>

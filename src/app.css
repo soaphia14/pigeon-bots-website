@@ -51,6 +51,12 @@ a {
   text-decoration: none;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 576px){
   .mt-sm-none {
     margin-top: 0em !important;
