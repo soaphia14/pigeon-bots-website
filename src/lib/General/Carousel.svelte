@@ -3,7 +3,7 @@
     import { carousel_id } from "../globalVars";
 
     export let images_info = [];
-    console.log("here", images_info, images_info.length)
+    // console.log("here", images_info, images_info.length)
     let spec_carousel_id;
     onMount(() => {
         carousel_id.update((state)=> (state+1)%20);

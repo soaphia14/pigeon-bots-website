@@ -1,6 +1,11 @@
 <script>
+    import { onMount } from "svelte";
     import { writable } from "svelte/store";
     import { prefix, title_class_def } from "../globalVars";
+    import {db, storage} from '../../firebase';
+    import { doc, getDoc } from "@firebase/firestore";
+    import { getDownloadURL, listAll, ref } from "@firebase/storage";
+
     let blank_img = "1g94wTr1GUc74FOoySBXBHut015Dq9aYs";
     let people = [
         {
@@ -89,7 +94,11 @@
     jQuery(document).on('shown.bs.modal', "#personModal", handleModal);
     jQuery(document).on('hide.bs.modal', "#personModal", resetModal);
     
-    
+    var memberData
+    onMount(async () => {
+        memberData = (await getDoc(doc(db, "General/Members"))).data();
+        console.log(memberData.Eddie);
+    })
 </script>
 
 <h1 class = {title_class_def}>Members</h1>

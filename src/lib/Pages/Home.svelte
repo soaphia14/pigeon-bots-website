@@ -3,8 +3,8 @@
     import { prefix } from "../globalVars";
     import {db, storage} from '../../firebase';
     import Carousel from "../General/Carousel.svelte";
-    import {Firestore, collection, doc, getDoc, getDocs, getFirestore, updateDoc } from "@firebase/firestore";
-    import { deleteObject, getBlob, getDownloadURL, listAll, ref, uploadBytes } from "@firebase/storage";
+    import { doc, getDoc } from "@firebase/firestore";
+    import { getDownloadURL, listAll, ref } from "@firebase/storage";
 
 
     let rangeArray =[];
@@ -36,11 +36,12 @@
             res.items.forEach(async (itemRef, index, array) => {
                 const imgSrc = await getDownloadURL(ref(storage, "homeSlideshow/"+itemRef.name));
                 carouselSrc.push(imgSrc);
-                if (index == array.length - 1) resolve();
+                if (carouselSrc.length == array.length){
+                    resolve();
+                }
             });
         })
         
-        console.log("home", carouselSrc)
         // get sponsor photos
         const res2 = await listAll(ref(storage, "sponsors"))
         var bar = await new Promise((resolve, reject) => {
@@ -54,19 +55,20 @@
                     src: imgSrc,
                     link: websiteLink
                 });
-                if (index == array.length-1) resolve();
+                if (sponsorsSrc.length == array.length){
+                    resolve();
+                }
             });
         })
-
-
+        
         setRange();
-        console.log("sponsors", sponsorsSrc);
         done = true;
         
     });
     
         
 </script>
+
 
 <div class ="row px-4 mt-3" id = "team_name">
     <div class = "col-sm-6 d-flex justify-content-end m-0">
@@ -119,9 +121,9 @@
 
     <h1 class = "text-green my-4">Current Sponsors</h1>   
     <div class = "row">
-        {#each sponsorsSrc as sponsor_src, i}
+        {#each sponsorsSrc as sponsorSrc, i}
             <div class = "col-sm d-flex justify-content-center align-items-center sponsors">
-                <a href = {"https://"+sponsor_src.link} target = "_blank"><img class = "w-75" src = {sponsor_src.src} alt = {'sponsor'+String(i)}></a>
+                <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-75" src = {sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
             </div>
         {/each}
     </div> 
