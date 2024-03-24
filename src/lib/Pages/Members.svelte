@@ -1,70 +1,24 @@
 <script>
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
-    import { prefix, title_class_def } from "../globalVars";
+    import {title_class_def} from "../globalVars";
     import {db, storage} from '../../firebase';
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
 
-    let blank_img = "1g94wTr1GUc74FOoySBXBHut015Dq9aYs";
-    let people = [
-        {
-            name: "Eddie",
-            role: "Captain",
-            des: "Hello, my name is Eddie, and I’m in 10th grade at Mclean High School. This is my 3rd year in FTC and my 5th year in FIRST. I help CAD and programming. I enjoy playing video games and reading.",
-            image_src: "15V8R92Wi4x3koGJ4BTcEqKgc2FiMWgJP"
-        },
-        {
-            name: "Isabelle",
-            role: "Programming Head",
-            des: "Hi, my name is Isabelle and I’m in 9th grade at Cabin John Middle School. This is my 4th year in FTC and my 5th year in FIRST. I am the head programmer, part-time CADder, and help with building.",
-            image_src: "15VyEyAmA7Jtt74S9ByZ9owjUz64fRIT_"
-        },
-        {
-            name: "Kaixin",
-            role: "Outreach Head",
-            des: "I'm Kaixin, a junior at Richard Montgomery HS. This is my first year in both FTC and FIRST. I love all art forms and find all sciences fascinating.",
-            image_src: "1SZoYFlmblTZaJB05dIlldTP72aADt54y"
-        },
-        {
-            name: "Alex",
-            role: "CAD/Build",
-            des: "Hello, my name is Alex and I’m a freshman at Winston Churchill Highschool in Rockville Maryland. I’ve been doing FTC for 3 years now and I mainly do CAD and building. I enjoy reading and playing video games.",
-            image_src: "15d6MUJJ-bu_YVRJWkGXeLSzWCGmCShOx"
-        },
-        
-        {
-            name: "Jesse",
-            role: "Outreach/Programming",
-            des: "Hi, I’m Jesse, an 8th grader at Takoma Park Middle School. This is my 2nd year participating in FTC. I mainly do outreach on the team. I also enjoy playing video games and basketball in my free time.",
-            image_src: "1G5GWj2LQD-RuDTk9rv-dW_ktt0TmazpT"
-        },
-        {
-            name: "Sophia",
-            role: "Programming",
-            des: "Hi, I’m Sophia! I’m 16 years old and I attend Poolesville High School. I’ve been in FTC as a programmer for three years, and I like to ice skate in my free time.",
-            image_src: "14wnT1_Qa0XW82Ik1PNmBHqs4dGLefUC6"
-        },
-        {
-            name: "Ben",
-            role: "Engineering NB/CAD",
-            des: "Hi, I'm Ben and I'm a junior at Poolesville High School. This is my first year doing FTC. I like playing sports in my free time.",
-            image_src: "15Jt3h80GCauh7j0q18F8YWHoPjN2NQJi"
-        },
-        { // THEY ARE THE RIGHT NAMES!!
-            name: "Aliana",
-            role: "Outreach/Programming",
-            des: "Hi, I’m Aliana and i’m a freshman at Thomas Jefferson High School for Science and Technology. It’s my first year doing FTC and I do outreach and programming. Some other hobbies I have are reading books and swimming.",
-            image_src: "1597Alp46H-563Pl-aDbdKR00bQciIqWg"   
-        },
-        {
-            name: "Alicia",
-            role: "Programming",
-            des: "Hi, I'm Alicia. I'm a ninth grader at TJ High School. It's my first year doing FTC. I enjoy reading and doing ballet in my free time.",
-            image_src: "15131FQ735TUj_EZFxElPQ1b2qFg96KXK",  
-        }
-    ]
-    // need: aliana, alicia, ben, kaixin, ben
+    let blank_img = "https://firebasestorage.googleapis.com/v0/b/nope-85379.appspot.com/o/members%2Fplaceholder.png?alt=media&token=13de1a21-2c83-4e53-b692-3db7a10d42ef";
+
+    let people = [];
+
+    /*
+    format:
+    {
+        name: (first name)
+        role: 
+        des: (description)
+        image_src: (firebase link)
+    }
+    */
 
     let modal_info = writable({
         name: "",
@@ -94,21 +48,49 @@
     jQuery(document).on('shown.bs.modal', "#personModal", handleModal);
     jQuery(document).on('hide.bs.modal', "#personModal", resetModal);
     
-    var memberData
+    var memberData;
+    var done = false;
     onMount(async () => {
+        let memberPhotos = {};
+        const res = await listAll(ref(storage, "members"))
+        var bar = await new Promise((resolve, reject) => {
+            var count = 0;
+            res.items.forEach(async (itemRef, index, array) => {
+                const imgSrc = await getDownloadURL(ref(storage, "members/"+itemRef.name));
+                let name = itemRef.name.split(".")[0];
+
+                memberPhotos[name] = imgSrc;
+                count++;
+                if (count == array.length){
+                    resolve();
+                }
+            });
+        })
+
         memberData = (await getDoc(doc(db, "General/Members"))).data();
-        console.log(memberData.Eddie);
+        let order = memberData.order;
+
+        order.forEach(ord => {
+            let tempMember = memberData[ord];// to add the img src
+            tempMember.image_src = memberPhotos[ord];
+            people.push(tempMember);
+            console.log(tempMember)
+        });
+
+        console.log(memberPhotos)
+        done = true;
     })
 </script>
 
 <h1 class = {title_class_def}>Members</h1>
 <p class = "d-flex justify-content-center">Click on a person's profile to learn more!</p>
 <br>
+{#if done}
 <div class = "row d-flex justify-content-center">
     {#each people as person, i}
         <div id = {"Member" + i} class = "col-sm-3 my-3 mx-4 border p-0" data-bs-toggle = "modal" data-bs-target = "#personModal">
             <div class = "d-flex image-div w-100 bg-gray">
-                <img src = {prefix + person.image_src} alt = {person.name + "'s Photo"} class = "" style = "object-fit: cover; width: 100%;"/>
+                <img src = {person.image_src} alt = {person.name + "'s Photo"} class = "" style = "object-fit: cover; width: 100%;"/>
             </div>
             <div class = "content mt-3 px-3">
                 <b><h5>{person.name}</h5></b>
@@ -117,7 +99,7 @@
         </div>
     {/each}
 </div>
-
+{/if}
 <div id = "personModal" class = "modal fade" tabindex = "-1">
     <div class = "modal-lg modal-dialog modal-dialog-centered">
         <div class = "modal-content">
@@ -129,7 +111,7 @@
                 <div class = "container-fluid">
                     <div class = "row">
                         <div class = "col-lg-5 d-flex p-3 justify-content-center" style = "">
-                            <img src = {prefix + ($modal_info.image_src || blank_img)} alt = "Member" style = "object-fit: cover; width: 100%; max-width: 300px; min-width: 300px;" />
+                            <img src = {($modal_info.image_src || blank_img)} alt = "Member" style = "object-fit: cover; width: 100%; max-width: 300px; min-width: 300px;" />
                         </div>
                         <div class = "col-lg-7 p-3">
                             <p><b>Name:</b> {$modal_info.name}</p>
