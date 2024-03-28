@@ -74,10 +74,8 @@
             let tempMember = memberData[ord];// to add the img src
             tempMember.image_src = memberPhotos[ord];
             people.push(tempMember);
-            console.log(tempMember)
         });
 
-        console.log(memberPhotos)
         done = true;
     })
 </script>

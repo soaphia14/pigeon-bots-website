@@ -130,6 +130,12 @@
 
 
 </div>
+{:else}
+<br>
+<div class = "container-fluid text-center">
+    Loading...   
+    <div class = "spinner-border spinner-border-sm"></div>
+</div>
 {/if}
 <style>
     /* Pigeon Bot Title */
