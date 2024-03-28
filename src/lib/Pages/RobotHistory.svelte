@@ -147,6 +147,11 @@
     {/if}
     </div>
 {/each}
+{:else}
+<div class = "container-fluid text-center">
+    Loading...   
+    <div class = "spinner-border spinner-border-sm"></div>
+</div>
 {/if}
 <style>
     .row {
