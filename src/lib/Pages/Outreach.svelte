@@ -108,19 +108,25 @@
         <div class = "container-fluid">
             {#each year.items as event, i}
                 <div class = "row rounded" style = "border: 1.5px solid rgba(50, 50, 50, 0.35);">
-                    <div class = "col-lg-7 content">
-                        <b><i>{event.title}</i></b>
-                        {#each event.des as text_line}
+                    {#if event.image_src.length == 0}
+                        <div class = "col-lg-12 content">
+                            <b><i>{event.title}</i></b>
                             <br><br>
-                            {text_line}
-                        {/each}
-                    </div>
-                    <div class = "col-lg-5 image">
-                        <Carousel images_info = {event.image_src} />
-                    </div>
+                            {@html event.des}
+                        </div>
+                    {:else}
+                        <div class = "col-lg-7 content">
+                            <b><i>{event.title}</i></b>
+                            <br><br>
+                            {@html event.des}
+                        </div>
+                        <div class = "col-lg-5 image">
+                            <Carousel images_info = {event.image_src} />
+                        </div>
+                    {/if}
                 </div>
                 {#if year.length - 1 != i}
-                    <br><br>
+                    <br>
                 {/if}
             {/each}
         </div>
@@ -135,7 +141,7 @@
 
 <style>
     .row {
-        padding: 1.5em;
+        padding: 0.75em;
     }
     .content {
         padding: 1em;

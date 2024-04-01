@@ -11,6 +11,7 @@
     })
 
 </script>
+
 {#if images_info.length <= 1 }
 <div class = "d-flex justify-content-center align-items-center h-100" style = "vertical-align">
     <img src = {images_info[0]} alt = "Slide Img 0" class = "d-block m-3" style = "width: 90%;"/>
