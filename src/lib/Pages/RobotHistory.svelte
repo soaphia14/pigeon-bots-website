@@ -90,9 +90,8 @@
 
                 years[index].items.push({
                     title: idData.title,
-                    textBefore: idData.textBefore,
-                    bulletPoints: idData.bullets,
-                    textAfter: idData.textAfter,
+                    des: idData.des,
+                    bullets: idData.bullets,
                     image_src: images
                 })
                 
@@ -116,18 +115,15 @@
         <!-- Actual content/boxes -->
         {#each year.items as robot, j} <!-- Loops through entries -->
             <Item image_src = {robot.image_src} title = {robot.title}> 
-                {#each robot.textBefore as text_line}  <!-- Text before bullet points -->
-                    {@html text_line}
-                {/each}
+                {@html robot.des}
+
+                <br><br>
+                Features:
                 <ul> <!-- Bullet points of text -->
-                    {#each robot.bulletPoints  as bullet_pt}
+                    {#each robot.bullets  as bullet_pt}
                         <li>{bullet_pt}</li>
                     {/each}
                 </ul>
-                {#each robot.textAfter as text_line}  <!-- Text after bullet points -->
-                    {@html text_line}
-                {/each}
-            
             </Item>
             {#if years.length -1 != i && year.items.length -1 == j}
                 <hr>
