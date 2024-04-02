@@ -31,7 +31,7 @@
             </ul>
             {#if data.order.length -1 != i && data[yearID].length -1 == j}
                 <hr>
-            {:else if data.order.length -1 != i}
+            {:else}
                 <br>
             {/if}
         {/each}

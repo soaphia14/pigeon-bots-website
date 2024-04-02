@@ -64,14 +64,14 @@
         
 </script>
 <h1 class = {title_class_def}>Outreach</h1>
+<br>
 
 {#if done}
-    {#each general as year}
-        <br>
+    {#each general as year, i}
         <h2 class = {title_secondary_class_def}>{year.title}</h2>
         <br>
         <div class = "container-fluid">
-            {#each year.items as event, i}
+            {#each year.items as event, j}
                 <div class = "row rounded" style = "border: 1.5px solid rgba(50, 50, 50, 0.35);">
                     {#if event.image_src.length == 0}
                         <div class = "col-lg-12 content">
@@ -90,9 +90,11 @@
                         </div>
                     {/if}
                 </div>
-                {#if year.length - 1 != i}
-                    <br>
-                {/if}
+            {#if general.length -1 != i && year.items.length -1 == j}
+                <hr>
+            {:else}
+                <br>
+            {/if}
             {/each}
         </div>
     {/each}
