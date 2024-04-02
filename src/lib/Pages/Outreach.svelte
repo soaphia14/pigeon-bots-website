@@ -6,6 +6,8 @@
 
     import Carousel from "../General/Carousel.svelte";
     import { text_green, text_purple, title_class_def, title_secondary_class_def } from "../globalVars";
+    import Item from "../General/Item.svelte";
+    import { event } from "jquery";
 
     /* Pseudo code:
        General (order)
@@ -70,41 +72,24 @@
     {#each general as year, i}
         <h2 class = {title_secondary_class_def}>{year.title}</h2>
         <br>
-        <div class = "container-fluid">
-            {#each year.items as event, j}
-                <div class = "row rounded" style = "border: 1.5px solid rgba(50, 50, 50, 0.35);">
-                    {#if event.image_src.length == 0}
-                        <div class = "col-lg-12 content">
-                            <b><i>{event.title}</i></b>
-                            <br><br>
-                            {@html event.des}
-                        </div>
-                    {:else}
-                        <div class = "col-lg-7 content">
-                            <b><i>{event.title}</i></b>
-                            <br><br>
-                            {@html event.des}
-                        </div>
-                        <div class = "col-lg-5 image">
-                            <Carousel images_info = {event.image_src} />
-                        </div>
-                    {/if}
-                </div>
+        {#each year.items as event, j}
+            <Item image_src = {event.image_src} title = {event.title}>
+                {@html event.des}
+            </Item>
+            
             {#if general.length -1 != i && year.items.length -1 == j}
                 <hr>
             {:else}
                 <br>
             {/if}
-            {/each}
-        </div>
+        {/each}
     {/each}
 {:else}
-<div class = "container-fluid text-center">
-    Loading...   
-    <div class = "spinner-border spinner-border-sm"></div>
-</div>
+    <div class = "container-fluid text-center">
+        Loading...   
+        <div class = "spinner-border spinner-border-sm"></div>
+    </div>
 {/if}
-
 
 <style>
     .row {

@@ -6,6 +6,7 @@
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
     import { onMount } from "svelte";
+    import Item from "../General/Item.svelte";
 
 
     // let year_2022_2023 = [
@@ -108,45 +109,33 @@
 <h1 class = {title_class_def}>Robot History</h1>
 <br>
 {#if done}
-{#each years as year, i}
-    <!-- Year title for the section(ex. "2021 - 2022") -->
-    <h2 class = {title_secondary_class_def}>{year.title}</h2>
-    <br>
-    <!-- Actual content/boxes -->
-    <div class = "container-fluid">
-        {#each year.items as robot, i} <!-- Loops through entries -->
-            <div class = "row rounded" style = "border: 1.5px solid rgba(50, 50, 50, 0.35);"> <!-- Creates a bordered box -->
-                <div class = "col-lg-7 content"> <!-- Part with text -->
-                    <b><i>{robot.title}</i></b> <!-- Title of container -->
-                    {#each robot.textBefore as text_line}  <!-- Text before bullet points -->
-                        <br><br>
-                        {@html text_line}
+    {#each years as year, i}
+        <!-- Year title for the section(ex. "2021 - 2022") -->
+        <h2 class = {title_secondary_class_def}>{year.title}</h2>
+        <br>
+        <!-- Actual content/boxes -->
+        {#each year.items as robot, j} <!-- Loops through entries -->
+            <Item image_src = {robot.image_src} title = {robot.title}> 
+                {#each robot.textBefore as text_line}  <!-- Text before bullet points -->
+                    {@html text_line}
+                {/each}
+                <ul> <!-- Bullet points of text -->
+                    {#each robot.bulletPoints  as bullet_pt}
+                        <li>{bullet_pt}</li>
                     {/each}
-                    <ul> <!-- Bullet points of text -->
-                        {#each robot.bulletPoints  as bullet_pt}
-                            <li>{bullet_pt}</li>
-                        {/each}
-                    </ul>
-                    {#each robot.textAfter as text_line}  <!-- Text after bullet points -->
-                        {@html text_line}
-                    {/each}
-                </div>
-
-                <div class = "col-lg-5 image"> <!-- Image -->
-                    <Carousel images_info = {robot.image_src} />
-                </div>
-            </div>
-            {#if year.items.length - 1 != i} <!-- Adds space if box isn't the last one -->
+                </ul>
+                {#each robot.textAfter as text_line}  <!-- Text after bullet points -->
+                    {@html text_line}
+                {/each}
+            
+            </Item>
+            {#if years.length -1 != i && year.items.length -1 == j}
+                <hr>
+            {:else}
                 <br>
             {/if}
-            
         {/each}
-
-    {#if years.length - 1 != i} <!-- Adds space if section isn't the last one -->
-        <hr>
-    {/if}
-    </div>
-{/each}
+    {/each}
 {:else}
 <div class = "container-fluid text-center">
     Loading...   
