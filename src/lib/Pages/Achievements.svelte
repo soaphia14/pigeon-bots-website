@@ -1,10 +1,41 @@
 <script>
+    import {db, storage} from '../../firebase';
+    import { doc, getDoc } from "@firebase/firestore";
+    import { getDownloadURL, listAll, ref } from "@firebase/storage";
 
     import { title_class_def, title_secondary_class_def } from "../globalVars";
+    import { onMount } from 'svelte';
 
+    var done = false;
+    var data;
+    onMount(async () => {
+        data = (await (getDoc(doc(db, "General/Achievements")))).data();
+        done = true;
+    });
 </script>
 <h1 class = {title_class_def}>Achievements</h1>
 <br>
+
+
+{#if done}
+    {#each data.order as yearID}
+        <h2 class = {title_secondary_class_def}>{yearID}</h2>
+        <br>
+        {#each data[yearID] as item}
+            <b><i><u>{item.title}</u></i></b>
+            <br>
+            <ul>
+                {#each item.bullets as bullet}
+                    <li>{bullet}</li>
+                {/each}
+            </ul>
+            <br>            
+        {/each}
+    {/each}
+
+{/if}
+
+<!-- 
 <h2 class = {title_secondary_class_def}>2022 - 2023</h2>
 <br>
 <b><i><u>Union Bridge Qualifier - 3rd Qualifier (Jan. 28)</u></i></b>
@@ -66,5 +97,5 @@
     <li>366 Ranking Points</li>
     <li>101 High Score</li>
     <li>5 – 0 – 0 Record</li>
+</ul> -->
 
-</ul>
