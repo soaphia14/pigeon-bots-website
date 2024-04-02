@@ -18,10 +18,10 @@
 
 
 {#if done}
-    {#each data.order as yearID}
+    {#each data.order as yearID, i}
         <h2 class = {title_secondary_class_def}>{yearID}</h2>
         <br>
-        {#each data[yearID] as item}
+        {#each data[yearID] as item, j}
             <b><i><u>{item.title}</u></i></b>
             <br>
             <ul>
@@ -29,7 +29,11 @@
                     <li>{bullet}</li>
                 {/each}
             </ul>
-            <br>            
+            {#if data.order.length -1 != i && data[yearID].length -1 == j}
+                <hr>
+            {:else if data.order.length -1 != i}
+                <br>
+            {/if}
         {/each}
     {/each}
 
