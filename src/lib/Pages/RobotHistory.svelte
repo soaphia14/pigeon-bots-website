@@ -137,13 +137,13 @@
                 </div>
             </div>
             {#if year.items.length - 1 != i} <!-- Adds space if box isn't the last one -->
-                <br><br>
+                <br>
             {/if}
             
         {/each}
 
     {#if years.length - 1 != i} <!-- Adds space if section isn't the last one -->
-        <br><hr><br>
+        <hr>
     {/if}
     </div>
 {/each}
