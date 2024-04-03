@@ -116,10 +116,10 @@
     <hr>
 
     <h1 class = "text-green my-4">Current Sponsors</h1>   
-    <div class = "row">
+    <div class = "row container-fluid">
         {#each sponsorsSrc as sponsorSrc, i}
-            <div class = "col-sm-4 mb-4 d-flex justify-content-center align-items-center sponsors">
-                <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-75" src = {sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
+            <div class = "col-lg-3 my-3 px-lg-4 flex-center sponsors text-center">
+                <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-100" src = {sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
             </div>
         {/each}
     </div> 
