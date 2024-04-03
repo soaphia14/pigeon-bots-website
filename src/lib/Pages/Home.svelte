@@ -103,13 +103,6 @@
     <div class = "row my-4">
         <div class = "col-lg-6">
             {@html homeData.aboutDes}
-            <br><br>
-            <span>
-            Email us at 
-                <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com">
-                    {homeData.email}
-                </a>!
-            </span>
         </div>
         <div id = "team_img" class = "col-lg-6 flex-center px-5 mt-2" >
             <Carousel images_info = {carouselSrc} />
