@@ -48,6 +48,9 @@
             res2.items.forEach(async (itemRef, index, array) => {
                 const imgSrc = await getDownloadURL(ref(storage, "sponsors/"+itemRef.name));
                 let websiteLink = itemRef.name.split(".")[0];
+                if (itemRef.name.split(".").length > 2) {
+                    websiteLink += "."+itemRef.name.split(".")[1];
+                }
                 let linkList = websiteLink.split("(");
                 websiteLink = linkList[1] + "." + linkList[2];
 
@@ -115,12 +118,11 @@
     <h1 class = "text-green my-4">Current Sponsors</h1>   
     <div class = "row">
         {#each sponsorsSrc as sponsorSrc, i}
-            <div class = "col-sm d-flex justify-content-center align-items-center sponsors">
+            <div class = "col-sm-4 mb-4 d-flex justify-content-center align-items-center sponsors">
                 <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-75" src = {sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
             </div>
         {/each}
     </div> 
-
 
 </div>
 {:else}
