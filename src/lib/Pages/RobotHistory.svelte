@@ -6,7 +6,7 @@
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
     import { onMount } from "svelte";
-    import Item from "../General/Item.svelte";
+    import Item from "../General/Section.svelte";
 
 
     // let year_2022_2023 = [

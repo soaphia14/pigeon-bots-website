@@ -6,7 +6,7 @@
 
     import Carousel from "../General/Carousel.svelte";
     import { text_green, text_purple, title_class_def, title_secondary_class_def } from "../globalVars";
-    import Item from "../General/Item.svelte";
+    import Item from "../General/Section.svelte";
     import { event } from "jquery";
 
     /* Pseudo code:

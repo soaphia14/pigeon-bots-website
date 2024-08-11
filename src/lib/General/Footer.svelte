@@ -5,22 +5,26 @@
 <div class = "container-fluid bg-gray p-5" style = "padding-top: 4em; margin-top: 5em; height: fit-content;">
     <div class = "row">
         <div class = "col-sm d-flex align-items-center">
-            <span>
-                <a target = "_blank" href = "https://www.youtube.com/@pigeonbots"><i class = "fa-brands fa-youtube"></i></a>
-<!-- TODO: change insta -->               <a target = "_blank" href = "https://www.instagram.com/penguinsrobotics/"><i class = "fa-brands fa-instagram"></i></a>
-                <a target = "_blank" href = "https://twitter.com/FTC23975"><i class = "fa-brands fa-twitter"></i></a>
-                <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com"><i class = "fa-solid fa-envelope"></i></a>
-        
-            </span>
+            <div>
+                <span>
+                    <a target = "_blank" href = "https://www.youtube.com/@pigeonbots"><i class = "fa-brands fa-youtube"></i></a>
+                    <a target = "_blank" href = "https://www.instagram.com/pigeonbots/"><i class = "fa-brands fa-instagram"></i></a>
+                    <a target = "_blank" href = "https://twitter.com/FTC23975"><i class = "fa-brands fa-twitter"></i></a>
+                    <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com"><i class = "fa-solid fa-envelope"></i></a>
+                </span>
+                <br>
+                <div class = "btn mt-2 fs-6">Sign in</div>
+            </div>
         </div>
         <div class = "col-sm d-flex justify-content-end mt-sm-2" style = "text-align: right;">
             <div>
                 <b style = "height:fit-content;">Address</b>
-            <br>
-            20 Courthouse Sq Suite 207
-            <br>
-            Rockville MD 20850
-            </div>
+                <br>
+                20 Courthouse Sq Suite 207
+                <br>
+                Rockville MD 20850
+                <br>
+            </div>  
         </div>
     </div>
 </div>

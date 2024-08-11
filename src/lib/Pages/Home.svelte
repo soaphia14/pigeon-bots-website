@@ -5,7 +5,10 @@
     import Carousel from "../General/Carousel.svelte";
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
-
+    import PhotoSwipeGallery from "svelte-photoswipe";
+    // import    from "svelte-photoswipe";
+    var images = [];
+    
 
     let rangeArray =[];
     let setRange = () =>{
@@ -36,6 +39,14 @@
             res.items.forEach(async (itemRef, index, array) => {
                 const imgSrc = await getDownloadURL(ref(storage, "homeSlideshow/"+itemRef.name));
                 carouselSrc.push(imgSrc);
+                images.push({
+                    src: imgSrc,
+                    width: 3000,
+                    height: 4000,
+                    alt: "Photo", // optional
+                    cropped: true, // optional, default=false; see https://photoswipe.com/v5/docs/ 
+                    thumbnail: { src: imgSrc, width: 300, height: 400 }, // "https://picsum.photos/id/1/300/400"
+                });
                 if (carouselSrc.length == array.length){
                     resolve();
                 }
@@ -111,7 +122,8 @@
             <Carousel images_info = {carouselSrc} />
         </div>
     </div>
-    
+    <PhotoSwipeGallery {images} styling="grid" gridColumns={4} />
+
     
     <hr>
 
