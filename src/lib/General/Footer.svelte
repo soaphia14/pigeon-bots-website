@@ -5,14 +5,20 @@
 <div class = "container-fluid bg-gray p-5" style = "padding-top: 4em; margin-top: 5em; height: fit-content;">
     <div class = "row">
         <div class = "col-sm d-flex align-items-center">
-            <span>
+            <div>
                 <a target = "_blank" href = "https://www.youtube.com/@pigeonbots"><i class = "fa-brands fa-youtube"></i></a>
-<!-- TODO: change insta -->               <a target = "_blank" href = "https://www.instagram.com/penguinsrobotics/"><i class = "fa-brands fa-instagram"></i></a>
+                <a target = "_blank" href = "https://www.instagram.com/pigeonbots/"><i class = "fa-brands fa-instagram"></i></a>
                 <a target = "_blank" href = "https://twitter.com/FTC23975"><i class = "fa-brands fa-twitter"></i></a>
                 <a target = "_blank" href = "mailto:pigeonbotsftc@gmail.com"><i class = "fa-solid fa-envelope"></i></a>
-        
-            </span>
+                <br><br>
+                <a target='_blank' href = 'https://docs.google.com/spreadsheets/d/1Dd0fLdFYP36DSvNPj6YCv0iOk0ZdvwZso3GQvOSVOJw/edit?usp=sharing'>
+                    <i class = 'fs-6 text-secondary'>Edit Text</i></a>
+                <a target='_blank' href = 'https://console.firebase.google.com/u/0/project/nope-85379/storage/nope-85379.appspot.com/files'>
+                    <i class = 'fs-6 text-secondary'>Edit Images</i></a>
+
+            </div>
         </div>
+
         <div class = "col-sm d-flex justify-content-end mt-sm-2" style = "text-align: right;">
             <div>
                 <b style = "height:fit-content;">Address</b>
