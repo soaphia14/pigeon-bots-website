@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { prefix } from "../globalVars";
-    import {db, storage} from '../../firebase';
+    import {db} from '../../firebase';
     import Carousel from "../General/Carousel.svelte";
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
@@ -23,46 +23,68 @@
     var homeData
     var done = false;
     
-    var carouselSrc = [];
-    var sponsorsSrc = [];
+    var carouselSrc = ['/homeSlideshow/image1.jpg'];
+    var sponsorsSrc = [
+        {
+            src: 'aderas.jpeg',
+            link: 'aderas.com'
+        }, 
+        {
+            src: 'caci.png',
+            link: 'caci.com'
+        }, 
+        {
+            src: 'capstone.webp',
+            link: 'capstonegrp.com'
+        }, 
+        {
+            src: 'etutorworld.png',
+            link: 'etutorworld.com'
+        }, 
+        {
+            src: 'ipearl.png',
+            link: 'ipearl.com'
+        }, 
+        {
+            src: 'roundtable.png',
+            link: 'mdspace.org'
+        }, 
+        {
+            src: 'snugfit_tighter.png',
+            link: 'snugfitsolutions.com'
+        }, 
+        {
+            src: 'umdrobotics.jpg',
+            link: 'robotics.umd.edu'
+        }
+    ]; // .src, .link
 
     onMount(async () => {
         // get descriptions/links
         homeData = (await getDoc(doc(db, "General/Home"))).data();
-        
-        // get slideshow photos
-        const res = await listAll(ref(storage, "homeSlideshow"))
-        var foo = await new Promise((resolve, reject) => {
-            res.items.forEach(async (itemRef, index, array) => {
-                const imgSrc = await getDownloadURL(ref(storage, "homeSlideshow/"+itemRef.name));
-                carouselSrc.push(imgSrc);
-                if (carouselSrc.length == array.length){
-                    resolve();
-                }
-            });
-        })
-        
-        // get sponsor photos
-        const res2 = await listAll(ref(storage, "sponsors"))
-        var bar = await new Promise((resolve, reject) => {
-            res2.items.forEach(async (itemRef, index, array) => {
-                const imgSrc = await getDownloadURL(ref(storage, "sponsors/"+itemRef.name));
-                let websiteLink = itemRef.name.split(".")[0];
-                if (itemRef.name.split(".").length > 2) {
-                    websiteLink += "."+itemRef.name.split(".")[1];
-                }
-                let linkList = websiteLink.split("(");
-                websiteLink = linkList[1] + "." + linkList[2];
 
-                sponsorsSrc.push({
-                    src: imgSrc,
-                    link: websiteLink
-                });
-                if (sponsorsSrc.length == array.length){
-                    resolve();
-                }
-            });
-        })
+
+        // get sponsor photos
+        // const res2 = await listAll(ref(storage, "sponsors"))
+        // var bar = await new Promise((resolve, reject) => {
+        //     res2.items.forEach(async (itemRef, index, array) => {
+        //         const imgSrc = await getDownloadURL(ref(storage, "sponsors/"+itemRef.name));
+        //         let websiteLink = itemRef.name.split(".")[0];
+        //         if (itemRef.name.split(".").length > 2) {
+        //             websiteLink += "."+itemRef.name.split(".")[1];
+        //         }
+        //         let linkList = websiteLink.split("(");
+        //         websiteLink = linkList[1] + "." + linkList[2];
+
+        //         sponsorsSrc.push({
+        //             src: imgSrc,
+        //             link: websiteLink
+        //         });
+        //         if (sponsorsSrc.length == array.length){
+        //             resolve();
+        //         }
+        //     });
+        // })
         
         setRange();
         done = true;
@@ -119,7 +141,7 @@
     <div class = "row container-fluid">
         {#each sponsorsSrc as sponsorSrc, i}
             <div class = "col-lg-3 my-3 px-lg-4 flex-center sponsors text-center">
-                <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-100" src = {sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
+                <a href = {"https://"+sponsorSrc.link} target = "_blank"><img class = "w-100" src = {'/sponsors/'+sponsorSrc.src} alt = {'sponsor'+String(i)}></a>
             </div>
         {/each}
     </div> 

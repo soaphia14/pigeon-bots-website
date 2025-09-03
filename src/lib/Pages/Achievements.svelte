@@ -1,5 +1,5 @@
 <script>
-    import {db, storage} from '../../firebase';
+    import {db} from '../../firebase';
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
 

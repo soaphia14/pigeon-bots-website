@@ -2,7 +2,7 @@
 
     import Carousel from "../General/Carousel.svelte";
     import { text_green, text_purple, title_class_def, title_secondary_class_def } from "../globalVars";
-    import {db, storage} from '../../firebase';
+    import {db} from '../../firebase';
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
     import { onMount } from "svelte";
@@ -80,13 +80,13 @@
             })
             for (const id of outreachData[yearID].ids) {
                 var idData = (await (getDoc(doc(db, "Robot History/"+id)))).data(); // title, des, id
-                var photoData = await listAll(ref(storage, "robotHistory/"+id))
+                // var photoData = await listAll(ref(storage, "robotHistory/"+id))
                 var images = [];
 
-                for (const itemRef of photoData.items) {
-                    const imgSrc = await getDownloadURL(ref(storage, "robotHistory/"+id+"/"+itemRef.name));
-                    images.push(imgSrc);
-                }
+                // for (const itemRef of photoData.items) {
+                //     const imgSrc = await getDownloadURL(ref(storage, "robotHistory/"+id+"/"+itemRef.name));
+                //     images.push(imgSrc);
+                // }
 
                 years[index].items.push({
                     title: idData.title,

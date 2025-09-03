@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
     import {title_class_def, title_secondary_class_def} from "../globalVars";
-    import {db, storage} from '../../firebase';
+    import {db} from '../../firebase';
     import { doc, getDoc } from "@firebase/firestore";
     import { getDownloadURL, listAll, ref } from "@firebase/storage";
 
@@ -63,7 +63,6 @@
     var done = false;
     onMount(async () => {
         let memberPhotos = {};
-        const res = await listAll(ref(storage, "members"))
         // var bar = await new Promise((resolve, reject) => {
         //     var count = 0;
         //     res.items.forEach(async (itemRef, index, array) => {

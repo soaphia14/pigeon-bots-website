@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
-    import {db, storage} from '../../firebase';
+    import {db} from '../../firebase';
     import { doc, getDoc } from "@firebase/firestore";
-    import { getDownloadURL, listAll, ref } from "@firebase/storage";
+    // import { getDownloadURL, listAll, ref } from "@firebase/storage";
 
     import Carousel from "../General/Carousel.svelte";
     import { text_green, text_purple, title_class_def, title_secondary_class_def } from "../globalVars";
@@ -40,13 +40,13 @@
             })
             for (const id of outreachData[yearID].ids) {
                 var idData = (await (getDoc(doc(db, "Outreach/"+id)))).data(); // title, des, id
-                var photoData = await listAll(ref(storage, "outreach/"+id))
+                // var photoData = await listAll(ref(storage, "outreach/"+id))
                 var images = [];
 
-                for (const itemRef of photoData.items) {
-                    const imgSrc = await getDownloadURL(ref(storage, "outreach/"+id+"/"+itemRef.name));
-                    images.push(imgSrc);
-                }
+                // for (const itemRef of photoData.items) {
+                //     const imgSrc = await getDownloadURL(ref(storage, "outreach/"+id+"/"+itemRef.name));
+                //     images.push(imgSrc);
+                // }
 
                 general[index].items.push({
                     title: idData.title,
