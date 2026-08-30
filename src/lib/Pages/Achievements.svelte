@@ -42,10 +42,6 @@
         </a>
     </div>
 
-    <br>
-    <hr>
-    <br>
-
     <!-- ==================== YEAR ACHIEVEMENTS ==================== -->
 
     {#each data.order as yearID, i}
